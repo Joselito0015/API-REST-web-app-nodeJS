@@ -1,8 +1,14 @@
+const cloudinary = require('cloudinary').v2;
 const { PDFDocument, rgb } = require('pdf-lib');
 const fs = require('fs').promises;
 //libreria para obetner fecha y hora
 
-
+cloudinary.config({
+    cloud_name: 'dmbtlv0hg',
+    api_key: '381815326731569',
+    api_secret: 'yBoghdZkYzBETXFy5Dlt9VgWnP8',
+  });
+  
 const inch = 72.0
 const cm = inch / 2.54
 
@@ -89,54 +95,8 @@ async function llenarYMarcarPDF(info) {
     const pdfBytesLlenado = await pdfDoc.save();
 
     // Guarda el PDF llenado en un nuevo archivo
-    await fs.writeFile('./src/utils/formulario_lleno.pdf', pdfBytesLlenado);
+    // await fs.writeFile('./src/utils/formulario_lleno.pdf', pdfBytesLlenado);
+    return pdfBytesLlenado;
 }
 
-module.exports = llenarYMarcarPDF
-
-// // Ejemplo de uso con la información del req.body
-// const infoFromBody = {
-//     "Nombre": "Nombre aquí",
-//     "DNI": "DNI aquí",
-//     "Cargo": "Cargo aquí",
-//     "Firma": "Firma aquí",
-//     "Fecha": "Fecha aquí",
-//     "Hora": "Hora aquí",
-//     "Contrata": "Contrata aquí",
-//     "ActosSubestandares": {
-//         "Marked": true,
-//         "CheckA": true,
-//         "CheckB": true,
-//         "CheckC": true,
-//         "CheckD": true,
-//         "CheckE": true,
-//         "CheckF": true,
-//         "CheckG": true,
-//         "CheckH": true,
-//         "CheckI": true,
-//         "Otros": true,
-//         "OtrosTexto": "Texto aquí"
-//     },
-//     "DetalleActo": "Detalle aquí",
-//     "CondicionesSubestandares": {
-//         "Marked": true,
-//         "Check1": true,
-//         "Check2": true,
-//         "Check3": true,
-//         "Check4": true,
-//         "Check5": true,
-//         "Check6": true,
-//         "Otros": true,
-//         "OtrosTexto": "Texto aquí"
-//     },
-//     "DetalleCondicion": "Detalle aquí",
-//     "Correción": "Correción aquí",
-//     "CheckList": {
-//         "Check1": true,
-//         "Check2": true,
-//         "Check3": true
-//     },
-//     "Observador": "Observador aquí"
-// };
-
-// llenarYMarcarPDF(infoFromBody).catch(console.error);
+module.exports = llenarYMarcarPDF;

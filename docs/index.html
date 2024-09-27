@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Configuraci%25C3%25B3n%2520principal%2520del%2520servidor%2520Express.html">Configuración principal del servidor Express</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+    <section class="package">
+        <h3> </h3>		
+    </section>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    <section class="readme usertext">
+        <article><h1>Servidor de Gestión Producto HarkAI</h1>
+<hr>
+<h2>Descripción del Proyecto</h2>
+<p>Esta API proporciona una plataforma robusta para la gestión y supervisión de la detección de Equipos de Protección Personal (EPP's) a través de cámaras con inteligencia artificial. Permite a las empresas controlar la seguridad de sus trabajadores al monitorear el uso adecuado de equipos de protección en áreas específicas.</p>
+<hr>
+<h2>Funcionalidades Principales</h2>
+<ul>
+<li>
+<p><strong>Gestión de Empresas:</strong></p>
+<ul>
+<li>Registro, actualización y eliminación de empresas.</li>
+<li>Consulta de detalles de empresas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Gestión de Áreas:</strong></p>
+<ul>
+<li>Asociación de áreas a empresas.</li>
+<li>Creación, edición y eliminación de áreas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Usuarios y Roles:</strong></p>
+<ul>
+<li>Administración de usuarios con roles definidos (administrador, supervisor, etc.).</li>
+<li>Asignación de usuarios a áreas y empresas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Registro de Incidentes:</strong></p>
+<ul>
+<li>Registro automático de incidentes detectados por las cámaras.</li>
+<li>Almacenamiento de imágenes y detalles relevantes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Reportes y Estadísticas:</strong></p>
+<ul>
+<li>Generación de informes sobre incidentes y cumplimiento del uso de EPP's.</li>
+</ul>
+</li>
+<li>
+<p><strong>Mensajería entre colaboradores</strong></p>
+<ul>
+<li>Servicio de mensajería dentro del aplicativo movil para atención rápida de incidentes.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>Funcionalidades en desarrollo</h2>
+<ul>
+<li>
+<p><strong>Asistente IA</strong></p>
+<ul>
+<li>Asistente virtual en plataforma web con servicios de AWS y modelos de Meta 3.1</li>
+</ul>
+</li>
+<li>
+<p><strong>Generación de reporte por voz</strong></p>
+<ul>
+<li>Utilizar modelos denominados Speech2Text para completar formularios.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>Tecnologías Utilizadas</h2>
+<ul>
+<li><strong>Node.js y Express.js:</strong> Plataforma y marco de trabajo para el desarrollo del backend.</li>
+</ul>
+<div align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Node.js_logo_2015.svg/2560px-Node.js_logo_2015.svg.png" alt="Node.js logo" width="400" height="auto">
+  <img src="https://miro.medium.com/v2/resize:fit:1400/1*i2fRBk3GsYLeUk_Rh7AzHw.png" alt="Express logo" width="400" height="auto">
+</div>
+<ul>
+<li><strong>MongoDB:</strong> Base de datos NoSQL para el almacenamiento de datos.</li>
+</ul>
+<div align="center">
+  <img src="https://niixer.com/wp-content/uploads/2023/03/mongoimagen-1280x600.png" alt="MongoDB logo" width="400" height="auto">
+</div>
+<ul>
+<li><strong>Supabase:</strong> Base de datos basada en PostgreSQL alojada completamente en la nube que almacena los mensajes del aplicativo movil.</li>
+</ul>
+<div align="center">
+  <img src="https://getlogo.net/wp-content/uploads/2020/11/supabase-logo-vector.png" alt="Supabase logo" width="400" height="auto">
+</div>
+<ul>
+<li>
+<p><strong>Mongoose:</strong> Biblioteca de modelado de objetos MongoDB para Node.js.</p>
+</li>
+<li>
+<p><strong>Cloudinary:</strong> Plataforma de gestión de medios en la nube para el almacenamiento de imágenes.</p>
+</li>
+</ul>
+<div align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Cloudinary_logo.svg/2560px-Cloudinary_logo.svg.png" alt="Cloudinary logo" width="400" height="auto">
+</div>
+<ul>
+<li>
+<p><strong>Integración de IA:</strong> Integración con sistemas de inteligencia artificial para detección de EPP's.</p>
+</li>
+<li>
+<p><strong>Open AI API:</strong> Biblioteca de herramientas para uso de modelos de inteligencia artificial</p>
+</li>
+</ul>
+<div align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/OpenAI_Logo.svg/1024px-OpenAI_Logo.svg.png" alt="Open AI logo" width="400" height="auto">
+</div>
+<ul>
+<li><strong>MQTT:</strong> Protocolo de información para comunicar la aplicación movil con los dispositivos, pero solo para los roles administrativos/desarrolladores.</li>
+</ul>
+<hr>
+<h2>Arquitectura del Proyecto</h2>
+<p>La arquitectura de <strong>HarkAI</strong> está diseñada bajo el principio de <strong>modularidad</strong> y sigue el patrón <strong>MVC (Modelo-Vista-Controlador)</strong>, lo que facilita la separación de responsabilidades y permite que cada módulo tenga un enfoque claro y bien definido. Esta estructura ha sido diseñada teniendo en mente una futura migración a una arquitectura de <strong>microservicios</strong>, que garantizará una mayor escalabilidad, disponibilidad y un mantenimiento más eficiente.</p>
+<h3>Disponibilidad</h3>
+<ul>
+<li><strong>Módulos Independientes</strong>: Al ser modular, los diferentes componentes pueden funcionar de manera autónoma. Esto asegura que fallas en un módulo específico no afecten a todo el sistema, incrementando así la disponibilidad.</li>
+<li><strong>Base de Datos NoSQL con MongoDB</strong>: Al utilizar MongoDB para la persistencia de datos, aprovechamos la replicación de datos y la alta disponibilidad que ofrece este motor de base de datos, permitiendo que las operaciones críticas permanezcan en línea incluso en casos de interrupciones.</li>
+</ul>
+<h3>Performance</h3>
+<ul>
+<li><strong>Comunicación Eficiente con MQTT</strong>: Para las interacciones en tiempo real, como el monitoreo a través de dispositivos conectados (cámaras, sensores, etc.), se utiliza el protocolo MQTT, que es ligero y eficiente en el uso de ancho de banda, optimizando la comunicación en aplicaciones distribuidas.</li>
+<li><strong>Uso de Node.js y Express.js</strong>: La elección de Node.js para el backend garantiza un rendimiento asíncrono eficiente, mientras que Express.js proporciona una capa ligera para manejar peticiones HTTP de manera ágil, permitiendo gestionar grandes volúmenes de tráfico.</li>
+</ul>
+<h3>Interoperabilidad</h3>
+<ul>
+<li><strong>API REST con JSON</strong>: El backend expone servicios RESTful que se comunican utilizando JSON, facilitando la interoperabilidad con sistemas de terceros, clientes móviles, web apps, y otros servicios de backend.</li>
+<li><strong>Integración con Servicios de Terceros</strong>: La integración con servicios en la nube como <strong>Cloudinary</strong> para la gestión de medios y <strong>Supabase</strong> para la base de datos de mensajería facilita una arquitectura que es fácilmente extensible y compatible con otros servicios en el futuro.</li>
+</ul>
+<h3>Componentes Principales del Sistema</h3>
+<ol>
+<li>
+<p><strong>API Gateway</strong></p>
+<ul>
+<li>Punto de entrada único para todas las peticiones. Gestiona la distribución de las solicitudes a los módulos correspondientes y realiza validaciones iniciales como la verificación de tokens de acceso.</li>
+</ul>
+</li>
+<li>
+<p><strong>Módulo de Autenticación</strong></p>
+<ul>
+<li>Responsable de la autenticación de los usuarios mediante JWT (JSON Web Tokens). Gestiona el login, la creación de tokens y la validación de roles.</li>
+</ul>
+</li>
+<li>
+<p><strong>Módulo de Gestión de Empresas y Áreas</strong></p>
+<ul>
+<li>Maneja las operaciones CRUD relacionadas con empresas y áreas supervisadas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Módulo de Usuarios y Roles</strong></p>
+<ul>
+<li>Administra los usuarios del sistema y define los roles. Asigna usuarios a áreas específicas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Módulo de Detección de Incidentes</strong></p>
+<ul>
+<li>Detecta automáticamente incidentes relacionados con EPPs a través de sistemas de inteligencia artificial.</li>
+</ul>
+</li>
+<li>
+<p><strong>Módulo de Reportes y Estadísticas</strong></p>
+<ul>
+<li>Genera reportes sobre el estado de cumplimiento del uso de EPPs.</li>
+</ul>
+</li>
+<li>
+<p><strong>Módulo de Mensajería</strong></p>
+<ul>
+<li>Proporciona un sistema de mensajería interna entre colaboradores dentro del aplicativo móvil, gestionado por Supabase.</li>
+</ul>
+</li>
+</ol>
+<div align="center">
+  <img src="https://res.cloudinary.com/dmbtlv0hg/image/upload/v1727439688/Artist/HarkAI/Capa_de_presentaci%C3%B3n_1_ncp8vo.png" alt="Arquitectura" width="800" height="auto">
+</div>
+<h3>Migración a Microservicios</h3>
+<p>La estructura actual está diseñada para facilitar la migración hacia microservicios. Cada módulo puede evolucionar hacia un servicio independiente que interactúa a través de API REST o eventos, permitiendo una mayor independencia en el desarrollo y la implementación.</p>
+<ul>
+<li><strong>Escalabilidad Independiente</strong>: Escalar los módulos según sea necesario sin afectar el sistema completo.</li>
+<li><strong>Despliegue Autónomo</strong>: Cada microservicio podrá ser desplegado y actualizado de manera independiente.</li>
+</ul>
+<hr>
+<h2>Uso de la API</h2>
+<p>La API está documentada en detalle en una serie de colecciones de Postman. Las rutas utilizadas dentro de estas colecciones cuentan con un metodo de autorización para evitar su uso por usuarios ajenos al proyecto.</p>
+<hr>
+<h2>Contacto</h2>
+<p>Para cualquier consulta o comentario, por favor contáctanos a través de <a href="mailto:area.innovacion@consultoriacarranza.com.pe">area.innovacion@consultoriacarranza.com.pe</a>.</p>
+<hr>
+<h2>Agradecimientos</h2>
+<p>Agradecemos a todas las personas que han contribuido y apoyado en el desarrollo de esta API.</p>
+<hr></article>
+    </section>
+
+
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a> on Fri Sep 27 2024 07:34:10 GMT-0500 (hora estándar de Perú) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>

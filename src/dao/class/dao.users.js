@@ -1,30 +1,34 @@
 const {Company} = require('../models/company.model');
 const { createHash } = require('../../utils/utils');
+let cache = {};
 
 class UserDAO {
   async getUsersByCompanyId(companyId) {
+   
     try {
-      const company = await Company.findById(companyId);
-      return company ? company.users : [];
+      const company = await Company.findById(companyId, 'users -_id');
+      if (!company) {
+        throw new Error('Compañía no encontrada');
+      }
+
+      return company.users;
     } catch (error) {
       throw error;
     }
   }
 
   async getUserByCompanyId(companyId, userId) {
-    console.log(companyId);
-    console.log(userId );
+   
     try {
-      const company = await Company.findById(companyId);
-      if (!company) {
-        throw new Error('Compañía no encontrada');
-      }
-
-      const user =  company.users.find(user => user._id.toString() === userId);
+      const user = await Company.findOne({ _id: companyId, 'users._id': userId }, { 'users.$': 1 });
+      // const company = await Company.findById(companyId, 'users');
+      // if (!company) {
+      //   throw new Error('Compañía no encontrada');
+      // }
       if (!user) {
         throw new Error('Usuario no encontrado');
       }
-      return user;
+      return user.users[0];
     } catch (error) {
       console.log(error);
       throw error;
@@ -33,7 +37,7 @@ class UserDAO {
 
   async addUser(companyId, userData) {
     try {
-      const company = await Company.findById(companyId);
+      const company = await Company.findById(companyId, 'users');
       if (!company) {
         throw new Error('Compañía no encontrada');
       }
@@ -46,6 +50,7 @@ class UserDAO {
         username: userData.username,
         password: createHash(userData.password),
         DNI: userData.DNI,
+        numContact: userData.numContact,
       };
 
       company.users.push(newUser);
@@ -58,7 +63,7 @@ class UserDAO {
 
   async updateUser(companyId, userId, newData) {
     try {
-      const company = await Company.findById(companyId);
+      const company = await Company.findById(companyId, 'users');
       if (!company) {
         throw new Error('Compañía no encontrada');
       }
@@ -70,6 +75,37 @@ class UserDAO {
 
       user.role = newData.role;
       user.Name = newData.Name;
+      user.email = newData.email;
+      user.DNI = newData.DNI;
+      user.numContact = newData.numContact;
+
+      await company.save();
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Actualiza solo los campos dados de un usuario
+  async patchUser(companyId, userId, newData) {
+    try {
+      const company = await Company.findById(companyId, 'users');
+      if (!company) {
+        throw new Error('Compañía no encontrada');
+      }
+
+      const user = company.users.find(user => user._id.toString() === userId);
+      if (!user) {
+        throw new Error('Usuario no encontrado');
+      }
+
+      user.role = newData.role || user.role;
+      user.Name = newData.Name || user.Name;
+      user.email = newData.email || user.email;
+      user.DNI = newData.DNI || user.DNI;
+      user.numContact = newData.numContact || user.numContact;
+      user.username = newData.username || user.username;
+      user.password = newData.password ? createHash(newData.password) : user.password;
 
       await company.save();
       return user;
@@ -80,7 +116,7 @@ class UserDAO {
 
   async deleteUser(companyId, userId) {
     try {
-      const company = await Company.findById(companyId);
+      const company = await Company.findById(companyId, 'users');
       if (!company) {
         throw new Error('Compañía no encontrada');
       }
@@ -117,6 +153,21 @@ class UserDAO {
       const companies = await Company.find({ "users._id": userId });
       const user = companies.flatMap(company => company.users.find(user => user._id.toString() === userId));
       return user;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Get password unhashed from email
+  async getPasswordByEmail(email) {
+    try {
+      const user = await Company.findOne({ "users.email": email }, { "users.$": 1 });
+      if (user) {
+        console.log(user.users[0].password.decrypt());
+        return user.password;
+      } else {
+        throw new Error('Usuario no encontrado');
+      }
     } catch (error) {
       throw error;
     }

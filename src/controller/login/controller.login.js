@@ -12,8 +12,12 @@ router.post('/login', passport.authenticate('login', { failureRedirect: '/login/
   req.session.business = req.business;
 
   const token = generateToken(req.user);
-
-  return res.status(200).json({ message: 'Sesión iniciada exitosamente', user: req.user, business: req.business, token: token });
+  const business = {
+    Name: req.business.Name,
+    _id: req.business._id,
+    info: req.business.InfoCompany
+  }
+  return res.status(200).json({ message: 'Sesión iniciada exitosamente', user: req.user, business: business, token: token });
 });
 
 //ruta en caso de error al iniciar sesión

@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
 });
 
 // Actualizar una compañía
-router.put('/:id', async (req, res) => {
+router.patch('/:id', async (req, res) => {
   const id = req.params.id;
   const newData = req.body;
   try {

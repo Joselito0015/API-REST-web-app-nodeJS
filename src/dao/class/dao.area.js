@@ -1,9 +1,26 @@
 const {Company} = require('../models/company.model');
-
+let cache = {};
 class AreaDAO {
   async getAreasByCompanyId(companyId) {
+    const cachedData = cache[companyId];
+    if (cachedData) {
+      // Every day in milliseconds
+      const oneHour = 24 * 60 * 60 * 1000;
+      const now = Date.now();
+      if (now - cachedData.timestamp < oneHour) {
+        return cachedData.data;
+      }
+    }
     try {
-      const company = await Company.findById(companyId);
+      const company = await Company.findById(companyId, 'areas');
+      if (!company) {
+        throw new Error('Compañía no encontrada');
+      }
+      // Update the cache with the new data and the current timestamp
+      cache[companyId] = {
+        data: company.areas,
+        timestamp: Date.now()
+      };
       return company ? company.areas : [];
     } catch (error) {
       throw error;
@@ -12,7 +29,7 @@ class AreaDAO {
 
   async getAreaById(companyId, areaId) {
     try {
-      const company = await Company.findById(companyId);
+      const company = await Company.findById(companyId, 'areas');
       if (!company) {
         throw new Error('Compañía no encontrada');
       }

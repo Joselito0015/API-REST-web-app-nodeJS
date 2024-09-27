@@ -54,6 +54,20 @@ router.put('/:companyId/users/:userId', async (req, res) => {
   }
 });
 
+// Actualiza solo los campos dados de un usuario
+router.patch('/:companyId/users/:userId', async (req, res) => {
+  const companyId = req.params.companyId;
+  const userId = req.params.userId;
+  const newData = req.body;
+
+  try {
+    const updatedUser = await User.patchUser(companyId, userId, newData);
+    res.json(updatedUser);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // Eliminar un usuario por su ID
 router.delete('/:companyId/users/:userId', async (req, res) => {
   const companyId = req.params.companyId;
@@ -62,6 +76,17 @@ router.delete('/:companyId/users/:userId', async (req, res) => {
   try {
     const deletedUser = await User.deleteUser(companyId, userId);
     res.json(deletedUser);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Recuperar contraseña de un usuario por email
+router.post('/forgot-password', async (req, res) => {
+  const email = req.body.email;
+  try {
+    const message = await User.getPasswordByEmail(email);
+    res.json(message);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

@@ -1,37 +1,25 @@
-const mongoose = require('mongoose');
-const { Company, Report } = require('../models/company.model');
+const { Incident, Report } = require('../models/company.model');
 
 class ReportDAO {
-  async subirReporte(incidentId, reportData) {
+  // Post a report
+  async subirReporte(reportData) {
     try {
-      const nuevoReporte = await Report.create(reportData);
-
-      const company = await Company.findOne({ 'incidents._id': incidentId }, { 'incidents.$': 1 });
-
-      if (company) {
-        const incident = company.incidents[0];
-
-        incident.reportes.push(nuevoReporte._id);
-
-        await Company.updateOne({ 'incidents._id': incidentId }, { $set: { 'incidents.$.reportes': incident.reportes } });
-      } else {
-        throw new Error('Incidente no encontrado');
-      }
+        const newReport = new Report(reportData);
+        const savedReport = await newReport.save();
+        return savedReport; 
     } catch (error) {
-      throw error;
+        console.error('Error original:', error); // Registrar el error original
+        error.message = 'Error al subir el reporte: ' + error.message; // Agregar más detalle al mensaje de error
+        throw error; // Lanzar el error original
     }
-  }
+}
 
   async getReportByIncidentId(incidentId) {
-    try {
-      const objectId = new mongoose.Types.ObjectId(incidentId);
-  
-      const report = await Report.findOne({ incidentId: objectId });
-      console.log(report,"reporte");
+    try {  
+      const report = await Report.findOne({ incidentId: incidentId });
       if (!report) {
         throw new Error('Reporte no encontrado');
       }
-  
       return report;
     } catch (error) {
       throw error;
